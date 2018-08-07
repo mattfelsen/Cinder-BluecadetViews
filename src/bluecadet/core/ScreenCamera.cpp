@@ -72,7 +72,7 @@ void ScreenCamera::zoomAtLocation(const float targetScale, const vec2 location) 
 	const vec2 targetPos = (currentPos - winCenter) * deltaScale + winCenter; // see http://math.stackexchange.com/a/5808/363352
 
 	mPlaceholderView->setScale(targetScale);
-	mPlaceholderView->setPosition(targetPos);
+	mPlaceholderView->setPosition(location);
 	updateViewport();
 }
 
