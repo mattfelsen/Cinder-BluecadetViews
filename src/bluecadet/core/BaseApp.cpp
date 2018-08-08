@@ -137,9 +137,11 @@ void BaseApp::draw(const bool clear) {
 		if (settings->mShowStats) {
 			mStats->drawScene();
 		}
+		/*
 		if (settings->getParams()->isVisible()) {
 			settings->getParams()->draw();
 		}
+		*/
 	}
 }
 
@@ -163,6 +165,7 @@ void BaseApp::keyDown(KeyEvent event) {
 		ScreenCamera::getInstance()->zoomToFitWindow();
 		break;
 	case KeyEvent::KEY_F1:
+		/*
 		if (!SettingsManager::getInstance()->getParams()->isVisible()) {
 			SettingsManager::getInstance()->getParams()->show();
 			SettingsManager::getInstance()->getParams()->maximize();
@@ -178,6 +181,7 @@ void BaseApp::keyDown(KeyEvent event) {
 			SettingsManager::getInstance()->getParams()->show();
 			SettingsManager::getInstance()->getParams()->maximize();
 		}
+		*/
 		break;
 	}
 }
@@ -196,11 +200,11 @@ void BaseApp::handleViewportChange(const ci::Area & viewport) {
 	mMiniMap->setViewport(viewport);
 	mMiniMap->setPosition(vec2(getWindowSize()) - mMiniMap->getSize() - vec2(mDebugUiPadding));
 	mStats->setPosition(vec2(mDebugUiPadding, (float)getWindowHeight() - mStats->getHeight() - mDebugUiPadding));
-	SettingsManager::getInstance()->getParams()->setPosition(vec2(mDebugUiPadding));
+	//SettingsManager::getInstance()->getParams()->setPosition(vec2(mDebugUiPadding));
 }
 
 void BaseApp::addTouchSimulatorParams(float touchesPerSecond) {
-
+	/*
 	mSimulatedTouchDriver.setTouchesPerSecond(touchesPerSecond);
 
 	const string groupName = "Touch Sim";
@@ -253,6 +257,7 @@ void BaseApp::addTouchSimulatorParams(float touchesPerSecond) {
 	if (SettingsManager::getInstance()->mCollapseParams) {
 		params->setOptions(groupName, "opened=false");
 	}
+	*/
 }
 
 }

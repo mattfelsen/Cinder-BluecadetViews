@@ -3,7 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
-#include "cinder/params/Params.h"
+//#include "cinder/params/Params.h"
 
 // These aren't used in the header, but added as convenience includes for BaseApp sub classes.
 #include "SettingsManager.h"

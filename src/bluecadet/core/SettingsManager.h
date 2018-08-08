@@ -3,7 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/Json.h"
 #include "cinder/Log.h"
-#include "cinder/params/Params.h"
+//#include "cinder/params/Params.h"
 
 namespace bluecadet {
 namespace core {
@@ -59,7 +59,7 @@ public:
 
 
 	//! Returns the app params, creates new params if necessary. 
-	ci::params::InterfaceGlRef getParams();
+	//ci::params::InterfaceGlRef getParams();
 
 
 

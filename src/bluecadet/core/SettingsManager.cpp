@@ -214,6 +214,7 @@ void SettingsManager::parseCommandLineArgs(const std::vector<std::string>& args)
 	}
 }
 
+/*
 ci::params::InterfaceGlRef SettingsManager::getParams() {
 	static ci::params::InterfaceGlRef params = nullptr;
 	if (!params) {
@@ -244,6 +245,7 @@ ci::params::InterfaceGlRef SettingsManager::getParams() {
 	}
 	return params;
 }
+*/
 
 }
 }
