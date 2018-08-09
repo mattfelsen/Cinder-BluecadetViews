@@ -88,6 +88,8 @@ public:
 	ci::ivec2		mWindowPos = ci::ivec2(-1, -1);		//! The window position on launch
 	ci::vec2		mCameraOffset;						//! The offset of the camera on launch
 	ci::ColorA		mClearColor = ci::ColorA::black();	//! The color used when clearing the screen before draw(). Defaults to opaque black.
+	bool			mClearEnabled = true;				//! Whether the screen should be cleared before drawing
+	bool			mApplyScreenCameraTransform = true;	//! Whether to apply ScreenCamera transform before drawing. Disable if drawing your scene into an FBO
 
 	// Touches
 	bool			mNativeTouchEnabled = false;		//! Native touch coming from the OS

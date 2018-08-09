@@ -105,32 +105,44 @@ void BaseApp::update() {
 	mStats->addValue("FPS", 1.0f / (float)deltaTime);
 }
 
-void BaseApp::draw(const bool clear) {
+void BaseApp::draw() {
 	auto settings = SettingsManager::getInstance();
 
-	if (clear) {
+	if (settings->mClearEnabled) {
 		gl::clear(settings->mClearColor);
 	}
 
 	{
-		gl::ScopedModelMatrix scopedMatrix;
 		// apply screen layout transform to root view
-		gl::multModelMatrix(ScreenCamera::getInstance()->getTransform());
-		mRootView->drawScene();
+		if (settings->mApplyScreenCameraTransform) {
+			gl::pushModelMatrix();
+			gl::multModelMatrix(ScreenCamera::getInstance()->getTransform());
+		}
 
-		// draw debug touches in app coordinate space
-		if (settings->mDebugEnabled && settings->mShowTouches) {
-			touch::TouchManager::getInstance()->debugDrawTouches();
+		mRootView->drawScene();
+		
+		if (settings->mDebugEnabled) {
+			// draw debug layers in app coordinate space
+			if (settings->mShowScreenLayout) {
+				ScreenLayout::getInstance()->draw();
+			}
+			// draw debug touches in app coordinate space
+			if (settings->mShowTouches) {
+				touch::TouchManager::getInstance()->debugDrawTouches();
+			}
+		}
+
+		if (settings->mApplyScreenCameraTransform) {
+			gl::popModelMatrix();
 		}
 	}
+}
+
+void BaseApp::drawDebug() {
+	auto settings = SettingsManager::getInstance();
 
 	if (settings->mDebugEnabled) {
-		// draw params and debug layers in window coordinate space
-		if (settings->mShowScreenLayout) {
-			gl::ScopedModelMatrix scopedMatrix;
-			gl::multModelMatrix(ScreenCamera::getInstance()->getTransform());
-			ScreenLayout::getInstance()->draw();
-		}
+		// draw params and helper views in window coordinate space
 		if (settings->mShowMinimap) {
 			mMiniMap->drawScene();
 		}

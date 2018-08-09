@@ -34,8 +34,8 @@ public:
 	void setup() override;					//! Use this method to do any initial setup before the first update() and draw().
 	virtual void lateSetup() {};			//! Use this method to finish any setup. Called after the first update() and draw().
 	void update() override;					//! Called on each frame before draw().
-	void draw() override { draw(true); };	//! Called on each frame after update().
-	virtual void draw(const bool clear);	//! Use this method to instead of just draw() to enable/disable clearing.
+	virtual void draw() override;			//! Called on each frame after update().
+	void drawDebug();						//! Called on each frame after update().
 
 	void keyDown(ci::app::KeyEvent event) override;
 

@@ -121,6 +121,8 @@ void SettingsManager::parseJson(ci::JsonTree & json) {
 	setFieldFromJsonIfExists(&mClearColor.g, "settings.window.clearColor.g");
 	setFieldFromJsonIfExists(&mClearColor.b, "settings.window.clearColor.b");
 	setFieldFromJsonIfExists(&mClearColor.a, "settings.window.clearColor.a");
+	setFieldFromJsonIfExists(&mClearEnabled, "settings.window.clearEnabled");
+	setFieldFromJsonIfExists(&mApplyScreenCameraTransform, "settings.window.applyScreenCameraTransform");
 
 	// Touch
 	setFieldFromJsonIfExists(&mMouseEnabled, "settings.touch.mouse");
