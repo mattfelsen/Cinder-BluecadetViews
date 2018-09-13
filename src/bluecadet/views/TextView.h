@@ -96,7 +96,7 @@ protected:
 	bool				mAutoRenderEnabled = true;
 	bool				mDemultiplyEnabled = true;
 
-	ci::Surface				mSurface;
+	ci::SurfaceRef			mSurface;
 	ci::gl::TextureRef		mTexture = nullptr;
 	ci::gl::Texture::Format	mTextureFormat;
 

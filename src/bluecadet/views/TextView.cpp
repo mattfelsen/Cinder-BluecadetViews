@@ -132,7 +132,7 @@ void TextView::renderContent(bool surfaceOnly, bool alpha, bool premultiplied, b
 		return;
 	}
 
-	if (mHasInvalidRenderedContent || hasChanges() || (mSurface.getSize() != getTextSize()) || (mTexture && mSurface.getSize() != mTexture->getSize())) {
+	if (mHasInvalidRenderedContent || hasChanges() || (mSurface->getSize() != getTextSize()) || (mTexture && mSurface->getSize() != mTexture->getSize())) {
 		mSurface = renderToSurface(alpha, premultiplied, getBackgroundColor().value());
 	}
 
@@ -140,8 +140,8 @@ void TextView::renderContent(bool surfaceOnly, bool alpha, bool premultiplied, b
 		mTexture = nullptr; // reset texture to save memory
 
 	} else {
-		mTexture = gl::Texture2d::create(mSurface, mTextureFormat);
-		mSurface = ci::Surface(); // reset surface to save memory
+		mTexture = gl::Texture2d::create(*mSurface, mTextureFormat);
+		mSurface = nullptr; // reset surface to save memory
 	}
 
 	mHasInvalidRenderedContent = false;
@@ -156,7 +156,7 @@ void TextView::invalidate(const bool layout, const bool size) {
 
 void TextView::resetRenderedContent() {
 	mTexture = nullptr;
-	mSurface = ci::Surface();
+	mSurface = nullptr;
 }
 
 void TextView::setSize(const ci::vec2 & size) {
